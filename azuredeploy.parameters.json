@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Registry name": {
+            "value": "" 
+        },
+        "SKU": {
+            "value": "" 
+        },
+        "aksCluster1": {
+            "value": "" 
+        },
+        "aksCluster2": {
+            "value": "" 
+        },
+        "kubernetesVersion": {
+            "value": "" 
+        },
+        "adminUsername": {
+            "value": "" 
+        },
+        "ClientID1": {
+            "value": "" 
+        },
+        "ClientID2": {
+            "value": "" 
+        },
+        "ClientSecret1": {
+            "value": "" 
+        },
+        "ClientSecret2": {
+            "value": "" 
+        }
+    }
+}
