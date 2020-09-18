@@ -2,12 +2,12 @@ trigger:
 - master
 
 variables:
-  dockerRegistryServiceConnection: 'CRSC'
+  dockerRegistryServiceConnection: 'ASACR'
   imageRepository: 'azure-vote-front'
-  containerRegistry: 'csacr.azurecr.io'
+  containerRegistry: 'teliosacr.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'csacr5d93-auth'
+  imagePullSecret: 'asacr4d93-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -36,7 +36,7 @@ stages:
     - upload: manifests
       artifact: manifests
 
-- stage: Development
+- stage: development
   displayName: Deploy to dev
   dependsOn: Build
 
@@ -45,7 +45,7 @@ stages:
     displayName: Deploy to dev
     pool:
       vmImage: $(vmImageName)
-    environment: 'Development.default'
+    environment: 'development.default'
     strategy:
       runOnce:
         deploy:
@@ -68,16 +68,16 @@ stages:
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
 
-- stage: Production
+- stage: production
   displayName: Deploy to prod
-  dependsOn: Development
+  dependsOn: development
   
   jobs:
   - deployment: Deploy
     displayName: Deploy to prod
     pool:
       vmImage: $(vmImageName)
-    environment: 'Production.default'
+    environment: 'production.default'
     strategy:
       runOnce:
         deploy:
