@@ -7,6 +7,10 @@ spec:
   selector:
     matchLabels:
       app: azure-vote-back
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 0
   template:
     metadata:
       labels:
@@ -42,7 +46,7 @@ spec:
       app: azure-vote-front
   strategy:
     rollingUpdate:
-      maxSurge: 2
+      maxSurge: 50%
       maxUnavailable: 0
   minReadySeconds: 5 
   template:
